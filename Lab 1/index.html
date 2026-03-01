@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабороторная работа №1</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+        section {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .screenshot {
+            display: block;       
+            margin: 15px auto;   
+            max-width: 100%;      
+        }
+        .caption {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Лабороторная работа №1</h1>
+</header>
+
+<section>
+    <h2>1. Подключение к серверу по SSH</h2>
+    <p>Для управления удаленным сервером было выполнено подключение с использованием протокола SSH.</p>
+    <img src="Images/SSH-result-1.png" alt="Скриншот команды SSH" class="screenshot">
+     <p class="caption">Рис 1. Результат выполнения команды <code>SSH username@kubsu-dev.ru -p 58528.</code></p>
+    <img src="Images/SSH-result-2.png" alt="Скриншот команды SSH" class="screenshot">
+     <p class="caption">Рис 2. Результат после введения пароля от username.</p>
+</section>
+
+<section>
+    <h2>2. Определение IP-адреса (ping)</h2>
+    <p>С помощью утилиты <code>ping</code> был определен IP-адрес веб-сервера kubsu.ru.</p>
+    <img src="Images/Ping-result.png" alt="Скриншот команды ping" class="screenshot">
+    <p class="caption">Рис 3. Результат выполнения команды <code>ping</code></p>
+</section>
+
+<section>
+    <h2>3. Проверка DNS-записей (nslookup)</h2>
+    <p>Для получения A-записей и MX-записей домена kubsu.ru и kubsu-dev.ru использовалась утилита <code>nslookup</code>.</p>
+    <img src="Images/nslookup-result-1.png" alt="Скриншот nslookup A-записи" class="screenshot">
+    <p class="caption">Рис 4. Результат после введения команды <code>nslookup kubsu.ru</code></p>
+    <img src="Images/nslookup-result-2.png" alt="Скриншот nslookup MX-записи" class="screenshot">
+    <p class="caption">Рис 5. Результат после введения команды <code>nslookup kubsu-dev.ru</code></p>
+    <img src="Images/nslookup-result-3.png" alt="Скриншот nslookup MX-записи" class="screenshot">
+    <p class="caption">Рис 6. Результат после введения команды <code>nslookup -type=mx kubsu.ru</code></p>
+</section>
+
+<section>
+    <h2>4. Данные о регистрации домена (whois)</h2>
+    <p>С помощью команды <code>whois</code> была получена информация о дате регистрации домена kubsu.ru и kubsu-dev.ru,.</p>
+    <img src="Images/whois-result-1.png" alt="Скриншот команды whois" class="screenshot">
+    <p class="caption">Рис 7. Результат после введения команды <code>nslookup kubsu.ru</code></p>
+    <img src="Images/whois-result-2.png" alt="Скриншот команды whois" class="screenshot">
+    <p class="caption">Рис 8. Результат после введения команды <code>nslookup kubsu-dev.ru</code></p>
+</section>
+
+</body>
+</html>

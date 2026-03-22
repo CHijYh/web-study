@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабороторная работа №1</title>
+    <title>Лабораторная работа №1</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,14 +12,17 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f7f6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
         }
         header {
             text-align: center;
             border-bottom: 2px solid #2c3e50;
             margin-bottom: 30px;
             padding-bottom: 10px;
+            animation: fadeInDown 0.8s ease-out;
         }
+
         section {
             text-align: center;
             background: #fff;
@@ -27,7 +30,22 @@
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
         }
+        section:nth-child(1){animation-delay: 0.1s;}
+        section:nth-child(2){animation-delay: 0.2s;}
+        section:nth-child(3){animation-delay: 0.3s;}
+        section:nth-child(4){animation-delay: 0.4s;}
+        section:nth-child(5){animation-delay: 0.5s;}
+        section:nth-child(6){animation-delay: 0.6s;}
+
+        section:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
         h2 {
             color: #2c3e50;
             margin-top: 0;
@@ -41,13 +59,41 @@
         .screenshot {
             display: block;       
             margin: 15px auto;   
-            max-width: 100%;      
+            max-width: 100%;
+            transition: transform 0.5s ease;     
         }
+
+        .screenshot:hover{
+            transform: scale(1.02);
+        }
+
         .caption {
             font-style: italic;
             color: #666;
             font-size: 0.9em;
 
+        }
+
+        @keyframes fadeInUp{
+            from{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown{
+            from{
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -60,51 +106,48 @@
 <section>
     <h2>1. Подключение к серверу по SSH</h2>
     <p>Для управления удаленным сервером было выполнено подключение с использованием протокола SSH.</p>
-    <img src="Images/SSH-result-1.png" alt="Скриншот команды SSH" class="screenshot">
-     <p class="caption">Рис 1. Результат выполнения команды <code>SSH username@kubsu-dev.ru -p 58528.</code></p>
-    <img src="Images/SSH-result-2.png" alt="Скриншот команды SSH" class="screenshot">
-     <p class="caption">Рис 2. Результат после введения пароля от username.</p>
+    <img src="Images/2.png" alt="Скриншот команды SSH" class="screenshot">
+     <p class="caption">Рис 1. Результат после введения пароля от username и использование команды <code>SSH username@kubsu-dev.ru -p 58528.</code></p>
 </section>
 
 <section>
     <h2>2. Определение IP-адреса (ping)</h2>
     <p>С помощью утилиты <code>ping</code> был определен IP-адрес веб-сервера kubsu.ru.</p>
-    <img src="Images/Ping-result.png" alt="Скриншот команды ping" class="screenshot">
-    <p class="caption">Рис 3. Результат выполнения команды <code>ping</code></p>
+    <img src="Images/1.png" alt="Скриншот команды ping" class="screenshot">
+    <p class="caption">Рис 2. Результат выполнения команды <code>ping</code></p>
 </section>
 
 <section>
     <h2>3. Проверка DNS-записей (nslookup)</h2>
     <p>Для получения A-записей и MX-записей домена kubsu.ru и kubsu-dev.ru использовалась утилита <code>nslookup</code>.</p>
-    <img src="Images/nslookup-result-1.png" alt="Скриншот nslookup A-записи" class="screenshot">
-    <p class="caption">Рис 4. Результат после введения команды <code>nslookup kubsu.ru</code></p>
-    <img src="Images/nslookup-result-2.png" alt="Скриншот nslookup MX-записи" class="screenshot">
-    <p class="caption">Рис 5. Результат после введения команды <code>nslookup kubsu-dev.ru</code></p>
-    <img src="Images/nslookup-result-3.png" alt="Скриншот nslookup MX-записи" class="screenshot">
-    <p class="caption">Рис 6. Результат после введения команды <code>nslookup -type=mx kubsu.ru</code></p>
+    <img src="Images/3.png" alt="Скриншот nslookup A-записи kubsu" class="screenshot">
+    <p class="caption">Рис 3. Результат после введения команды <code>nslookup kubsu.ru</code> и <code>nslookup -type=mx kubsu.ru</code></p>
+    <img src="Images/4.png" alt="Скриншот nslookup MX-записи kusbu-dev" class="screenshot">
+    <p class="caption">Рис 4. Результат после введения команды <code>nslookup kubsu-dev.ru</code> и <code>nslookup -type=mx kubsu-dev.ru</code></p>
+
 </section>
 
 <section>
     <h2>4. Данные о регистрации домена (whois)</h2>
     <p>С помощью команды <code>whois</code> была получена информация о дате регистрации домена kubsu.ru и kubsu-dev.ru,.</p>
-    <img src="Images/whois-result-1.png" alt="Скриншот команды whois" class="screenshot">
-    <p class="caption">Рис 7. Результат после введения команды <code>nslookup kubsu.ru</code></p>
-    <img src="Images/whois-result-2.png" alt="Скриншот команды whois" class="screenshot">
-    <p class="caption">Рис 8. Результат после введения команды <code>nslookup kubsu-dev.ru</code></p>
+    <img src="Images/5.png" alt="Скриншот команды whois" class="screenshot">
+    <p class="caption">Рис 5. Результат после введения команды <code>nslookup kubsu.ru</code></p>
+    <img src="Images/7.png" alt="Скриншот команды whois" class="screenshot">
+    <p class="caption">Рис 6. Результат после введения команды <code>nslookup kubsu-dev.ru</code></p>
 </section>
 
 <section>
     <h2>5.Клонирование репозитария</h2>
     <a href="http://u82565.kubsu-dev.ru/Lab%201"> u82565.kubsu-dev.ru</a>
     <img src="Images/CloneRep.png" alt="Clone" class="screenshot">
-    <p class="caption">Рис 9. Клонирование репозитария со скриншотами и страницей в каталог www</p>
+    <p class="caption">Рис 7. Клонирование репозитария со скриншотами и страницей в каталог www</p>
     
 </section>
 
 <section>
     <h2>6. Соединение с сервером с помощью Filezilla</h2>
     <img src="Images/FileZilla.png" alt="FileZilla" class="screenshot">
-    <p class="caption">Рис 10. Копирование на локальный компьютер файлы задания из каталога www. с Filezilla</p>
+    <p class="caption">Рис 8. Копирование на локальный компьютер файлы задания из каталога www. с Filezilla</p>
 </section>
 
 </body>

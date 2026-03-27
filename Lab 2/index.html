@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабороторная работа №2</title>
+    <title>Лабораторная работа №1</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f7f6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
         }
         header {
             text-align: center;
             border-bottom: 2px solid #2c3e50;
             margin-bottom: 30px;
             padding-bottom: 10px;
+            animation: fadeInDown 0.8s ease-out;
         }
+
         section {
             text-align: center;
             background: #fff;
@@ -27,7 +30,22 @@
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
         }
+        section:nth-child(1){animation-delay: 0.1s;}
+        section:nth-child(2){animation-delay: 0.2s;}
+        section:nth-child(3){animation-delay: 0.3s;}
+        section:nth-child(4){animation-delay: 0.4s;}
+        section:nth-child(5){animation-delay: 0.5s;}
+        section:nth-child(6){animation-delay: 0.6s;}
+
+        section:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
         h2 {
             color: #2c3e50;
             margin-top: 0;
@@ -41,13 +59,41 @@
         .screenshot {
             display: block;       
             margin: 15px auto;   
-            max-width: 100%;      
+            max-width: 100%;
+            transition: transform 0.5s ease;     
         }
+
+        .screenshot:hover{
+            transform: scale(1.02);
+        }
+
         .caption {
             font-style: italic;
             color: #666;
             font-size: 0.9em;
 
+        }
+
+        @keyframes fadeInUp{
+            from{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown{
+            from{
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -58,40 +104,51 @@
 </header>
 
 <section>
-    <h2>1. Получить главную страницу методом GET в протоколе HTTP 1.0</h2>
-    <img src="Images/1.png" alt="Скриншот" class="screenshot">
-     <p class="caption">Рис 1. Результат </p>
-
+    <h2>1. GET главной страницы с использованием протокола HTTP 1.0</h2>
+    <p>Получение главную страницу методом GET в протоколе HTTP 1.0</p>
+    <img src="Images/1.1.1.png" alt="Скриншот команды SSH" class="screenshot">
+     <p class="caption">Рис 1. Результат после использования команды <code>GET /index.php HTTP/1.0</code></p>
 </section>
 
 <section>
-    <h2>2. Получить внутреннюю страницу методом GET в протоколе HTTP 1.1</h2>
-    <img src="Images/2.png" alt="Скриншот" class="screenshot">
-    <p class="caption">Рис 2. Результат </p>
+    <h2>2. GET внутренней страницы с использованием протокола HTTP 1.1</h2>
+    <p>Получение внутренней страницы методом GET в протоколе HTTP 1.1</p>
+    <img src="Images/2.1.1.png" alt="Скриншот команды ping" class="screenshot">
+    <p class="caption">Рис 2. Результат выполнения команды <code>GET /files/index.php HTTP/1.1</code></p>
 </section>
 
 <section>
+
     <h2>3. Определить размер файла file.tar.gz, не скачивая его</h2>
-    <img src="Images/3.png" alt="Скриншот" class="screenshot">
-    <p class="caption">Рис 3. Результат</p>
+    
+    <img src="Images/3.1.png" alt="Скриншот nslookup A-записи kubsu" class="screenshot">
+    <p class="caption">Рис 3. Результат после введения команды <code>HEAD /files/files.tar.gz HTTP/1.1</code></p>
 </section>
 
 <section>
     <h2>4. Определить медиатип ресурса /image.png</h2>
-    <img src="Images/4.png" alt="Скриншот" class="screenshot">
-    <p class="caption">Рис 4. Результат</p>
+    <img src="Images/4.1.png" alt="Скриншот команды whois" class="screenshot">
+    <p class="caption">Рис 5. Результат после введения команды <code>HEAD /files/image.png HTTP/1.1</code></p>
+</section>
+
+<section>
+    <h2>5.Отправить комментарий на сервер по адресу /index.php</h2>
+    <img src="Images/5.1.png" alt="Clone" class="screenshot">
+    <p class="caption">Рис 5. Результат после введения команды <code>POST /index.php HTTP/1.1 comment=Hello+from+macOS</code></p>
+    
 </section>
 
 <section>
     <h2>6. Получить первые 100 байт файла /file.tar.gz</h2>
-    <img src="Images/6.png" alt="Скриншот" class="screenshot">
-    <p class="caption">Рис 6. Результат</p>
+    <img src="Images/6.1.png" alt="FileZilla" class="screenshot">
+    <p class="caption">Рис 5. Результат после введения команды <code>GET /files/files.tar.gz HTTP/1.1 Range: bytes=0-99</code></p>
 </section>
 
 <section>
     <h2>7. Определить кодировку ресурса /index.php</h2>
-    <img src="Images/7.png" alt="Скриншот" class="screenshot">
-    <p class="caption">Рис 7. Результат</p>
+    <img src="Images/7.1.png" alt="FileZilla" class="screenshot">
+    <p class="caption">Рис 5. Результат после введения команды <code>HEAD /index.php HTTP/1.1</code></p>
 </section>
+
 </body>
 </html>
